@@ -1,6 +1,7 @@
 package exercises;
 
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -35,14 +36,32 @@ public class TowersOfHanoi {
      * @param to    target peg label, e.g. 'C'
      * @param moves output list to record each move as a string "X -> Y"
      */
+
     public static void solve(int n, char from, char aux, char to, List<String> moves) {
         // TODO: implement recursively
-        // if (n == 0) return;
-        // 1) solve(n - 1, from, to, aux, moves);
-        // 2) moves.add(from + " -> " + to);
-        // 3) solve(n - 1, aux, from, to, moves);
+        if (n == 0)
+            return;
+        solve(n - 1, from, to, aux, moves);
+        moves.add("move " + n + ": " + from + " -> " + to);
+        solve(n - 1, aux, from, to, moves);
     }
-}
+    public static void main(String[] args) {
+        int n = 3; // You can change this number to test other values
+        List<String> moves = new ArrayList<>();
+
+        solve(n, 'A', 'B', 'C', moves);
+
+        // Print all recorded moves
+        for (String move : moves) {
+            System.out.println(move);
+        }
+
+        // Print total number of moves
+        System.out.println("Total moves: " + moves.size());
+    }
+    }
+
+
 
 
 
