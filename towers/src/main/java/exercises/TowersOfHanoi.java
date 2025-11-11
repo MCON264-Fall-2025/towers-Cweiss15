@@ -42,25 +42,11 @@ public class TowersOfHanoi {
         if (n == 0)
             return;
         solve(n - 1, from, to, aux, moves);
-        moves.add("move " + n + ": " + from + " -> " + to);
+        moves.add(from + " -> " + to);
         solve(n - 1, aux, from, to, moves);
     }
-    public static void main(String[] args) {
-        int n = 3; // You can change this number to test other values
-        List<String> moves = new ArrayList<>();
 
-        solve(n, 'A', 'B', 'C', moves);
-
-        // Print all recorded moves
-        for (String move : moves) {
-            System.out.println(move);
-        }
-
-        // Print total number of moves
-        System.out.println("Total moves: " + moves.size());
-    }
-    }
-
+}
 
 
 
